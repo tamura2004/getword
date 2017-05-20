@@ -1,0 +1,20 @@
+= simple_form_for @name, :html => { :class => "form-horizontal" } do |f|
+  = f.input :w1
+  = error_span(@name[:w1])
+  = f.input :w2
+  = error_span(@name[:w2])
+  = f.input :w3
+  = error_span(@name[:w3])
+  = f.input :w4
+  = error_span(@name[:w4])
+  = f.input :w5
+  = error_span(@name[:w5])
+  = f.input :w6
+  = error_span(@name[:w6])
+  = f.input :w7
+  = error_span(@name[:w7])
+  = f.input :w8
+  = error_span(@name[:w8])
+  = f.button :submit, :class => 'btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), names_path, :class => 'btn btn-default'

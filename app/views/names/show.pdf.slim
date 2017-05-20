@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong W1:
+  = @name.w1
+p
+  strong W2:
+  = @name.w2
+p
+  strong W3:
+  = @name.w3
+p
+  strong W4:
+  = @name.w4
+p
+  strong W5:
+  = @name.w5
+p
+  strong W6:
+  = @name.w6
+p
+  strong W7:
+  = @name.w7
+p
+  strong W8:
+  = @name.w8
+
+= link_to 'Edit', edit_name_path(@name)
+'  |
+= link_to 'Back', names_path

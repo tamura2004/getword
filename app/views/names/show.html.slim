@@ -1,0 +1,42 @@
+- model_class = Name
+.page-header
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:w1) + ':'
+  br
+  = @name.w1
+p
+  strong= model_class.human_attribute_name(:w2) + ':'
+  br
+  = @name.w2
+p
+  strong= model_class.human_attribute_name(:w3) + ':'
+  br
+  = @name.w3
+p
+  strong= model_class.human_attribute_name(:w4) + ':'
+  br
+  = @name.w4
+p
+  strong= model_class.human_attribute_name(:w5) + ':'
+  br
+  = @name.w5
+p
+  strong= model_class.human_attribute_name(:w6) + ':'
+  br
+  = @name.w6
+p
+  strong= model_class.human_attribute_name(:w7) + ':'
+  br
+  = @name.w7
+p
+  strong= model_class.human_attribute_name(:w8) + ':'
+  br
+  = @name.w8
+
+= link_to t('.back', :default => t("helpers.links.back")), names_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_name_path(@name), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), name_path(@name), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

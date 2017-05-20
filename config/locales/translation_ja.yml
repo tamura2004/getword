@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      name: 名  #g
+
+    attributes:
+      name:
+        w1: W1  #g
+        w2: W2  #g
+        w3: W3  #g
+        w4: W4  #g
+        w5: W5  #g
+        w6: W6  #g
+        w7: W7  #g
+        w8: W8  #g
