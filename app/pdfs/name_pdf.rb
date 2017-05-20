@@ -29,13 +29,13 @@ class NamePdf
     float do
       move_down LINE_PADDING
       seat_island_table [
-          %w(船岡 三浦 大田 奥平),
+          %w(船岡島 三浦島 大田島 奥平島),
           %w(! # $ %),
         ]
  
       move_down LINE_PADDING
       seat_island_table [
-          %w(長田 峠 峯川 山本),
+          %w(長田島 峠島 峯川島 山本島),
           %w(? * & @)
         ]
     end
