@@ -8,7 +8,6 @@ html lang="en"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
-    = wicked_pdf_stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 
 
   body
@@ -21,9 +20,7 @@ html lang="en"
           a.navbar-brand href="#"Getword
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              li= link_to "PDF(全ページ)", "/names.pdf"
 
     .container
       .row
