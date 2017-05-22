@@ -8,6 +8,9 @@ class NamePdf
   REGULAR = "vendor/fonts/migmix-1p-regular.ttf"
   BOLD = "vendor/fonts/migmix-1p-bold.ttf"
   LINE_PADDING = 16
+  S = Prawn::Text::NBSP
+  MS = S * 4
+  LS = S * 16
 
   def initialize(names)
     super()
@@ -22,46 +25,66 @@ class NamePdf
   end
 
   def practice_page(name)
+    float do
+      text_box sprintf("用紙ID: %04d", name.id), at: [0, 740], size: 9
+    end
+
     header
 
-    lead "カードを交換してワードを完成させましょう。より多くの人と交換し、長いワードを作成すると高得点です。積極性を発揮して、高得点を得るための作戦を考えて参加してみましょう。"
+    lead "カードを交換してコンピュータ用語(以下ワード)を完成させましょう。席が離れた人と多く交換すると高得点になります。得点計算ルールを見て、自分なりの作戦を立てて参加してみましょう。"
 
     float do
-      move_down LINE_PADDING
+      move_down LINE_PADDING/2
       seat_island_table [
           %w(船岡島 三浦島 大田島 奥平島),
           %w(! # $ %),
         ]
  
-      move_down LINE_PADDING
+      move_down LINE_PADDING/2
       seat_island_table [
-          %w(長田島 峠島 峯川島 山本島),
-          %w(? * & @)
+          ["その他島","","峯川島","山本島"],
+          ["?","","&","@"]
         ]
     end
 
     chapter "1. 準備" do
       text "・あなたのマークを座席の島で決めます（右図）"
-      text "・用紙下の英字カードの右上隅の四角内にも同じ"
-      text "#{Prawn::Text::NBSP*4}マークを書き込んでください。"
+      text "・用紙下の8枚の英字カードの右上隅の四角内にも同じ"
+      text "#{MS}マークを書き込んでください。"
       text "・点線でカードを切り離したら準備終了です。"
     end
 
-    move_down 20
-
     chapter "2. 交換" do
-      text "・開始の合図があったら席を立って自由にカードを高官してください。双方の合意があれば、枚数が異なっていても、片方が0枚の交換でも構いません。誰とでも何回でも交換できます。制限時間は10分です。"
+      text "・開始の合図があったら席を立って自由にカードを交換してください。双方の合意があれば、枚数が異なっていても、片方が0枚の交換でも構いません。誰とでも何回でも交換できます。"
     end
 
     chapter "3. ワード作成" do
-      text "・終了の合図があったら着席し、カードを並べて意味のあるワード（文字列）を作成しましょう。「vi」や「ls」など辞書に乗っている英単語でなくても、コンピュータ用語であれば適正なワードです。"
-      text "同じ文字のカードのペア（例「Q」「Q」の2枚）を好きな別のアルファベットとして使うことができます。うまくワードにならない場合、活用しましょう。"
-      text "複数のワードを作成できますが、1枚のカードは1つのワードにしか使えません。使わなかったカードは減点対象になります。"
+      text "・終了の合図があったら着席し、カードを並べて意味のあるワードを作成しましょう。"
+      font(BOLD){ text "・同じ文字のカードのペア2枚を好きな文字1枚として使うことができます。"}
+      text "・作成したワードを下のマス目に記入しましょう。"
     end
 
+    # ワード記入用マス目
+    move_down LINE_PADDING/2
+    12.times do |i|
+      stroke do
+        undash
+        rectangle [20 + i * 40, cursor], 40, 40
+      end
+    end
+
+    move_down 40
+
     chapter "4. 得点計算" do
-      text "・以下の通り計算します。ワードがすべてコンピュータ用語であれば計算結果をさらに2倍にします。"
-      text "（最も長いワードのカード枚数 ー 使えなかったカードの枚数）× マークの種類数"
+      text "ワードに使わないカードがあっても構いません。その場合でもマークの種類には含めます。"
+      move_down LINE_PADDING*2
+      text "ワードの文字数 #{LS} × マークの種類数 #{LS} ＝ あなたの得点 #{LS}"
+      stroke do
+        undash
+        rectangle [95,335],40,40
+        rectangle [255,335],40,40
+        rectangle [405,335],80,40
+      end
     end
 
     # アルファベットカード配置

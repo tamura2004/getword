@@ -20,6 +20,17 @@ class NamesController < ApplicationController
   # GET /names/1
   # GET /names/1.json
   def show
+    @names = [@name]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = NamePdf.new(@names)
+        send_data pdf.render,
+          # filename: "#{@name.id}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+      end
+    end
   end
 
   # GET /names/new

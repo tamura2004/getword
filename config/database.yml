@@ -9,8 +9,10 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   encoding: unicode
   min_messages: WARNING
-  username: postgres
-  host: db
+  username: tamura
+  password: tamura
+  # username: postgres
+  # host: db
 
 development:
   <<: *default
