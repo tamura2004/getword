@@ -33,6 +33,18 @@ class NamesController < ApplicationController
     end
   end
 
+  def sheet
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = SheetPdf.new
+        send_data pdf.render,
+          type: "application/pdf",
+          disposition: "inline"
+      end
+    end
+  end
+
   # GET /names/new
   def new
     @name = Name.new
