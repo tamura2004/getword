@@ -14,7 +14,7 @@ WORKDIR /project
 ADD Gemfile /project/Gemfile
 ADD Gemfile.lock /project/Gemfile.lock
 
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES YES
+
 RUN gem install bundler
 RUN bundle install
-
-ADD . /project

@@ -9,15 +9,12 @@ class SheetPdf
     # stroke_axis
     font REGULAR
 
-    define_grid(columns: 6, rows: 8, gutter: 0)
+    define_grid(columns: 10, rows: 10, gutter: 4)
     # grid.show_all
     6.times do |j|
       8.times do |i|
         grid(i,j).bounding_box do
-          pad(8) { indent(4) { text "ゴブリン#{i+j*8}" }}
-          indent(12) do
-            table [["1","2","3"]], cell_style: { width: 32, height: 32 }
-          end
+          pad(8) { indent(8) { text "#{rand(100)}" }}
           stroke_bounds
         end
       end
